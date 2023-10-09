@@ -1,18 +1,23 @@
 class Music
 {
-    public string name;
-    public string artist;
-    public string style;
-    public int duration;
-    public bool available;
+    public string Name { get; set; }
+    public string Artist { get; set; }
+    public string Style { get; set; }
+    public int Duration { get; set; }
+    public bool Available { get; set; }
+
+    //get - arrow function type
+    public string Summary =>
+        $"The music {Name} is from {Artist}";
+    
 
     public void DisplayMusicDetails()
     {
-        Console.WriteLine($"Name: {name}");
-        Console.WriteLine($"Artist: {artist}");
-        Console.WriteLine($"Style: {style}");
-        Console.WriteLine($"Duration: {duration}");
-        if (available)
+        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Artist: {Artist}");
+        Console.WriteLine($"Style: {Style}");
+        Console.WriteLine($"Duration: {Duration}");
+        if (Available)
         {
             Console.WriteLine("Available on the plan.");
         }
@@ -20,10 +25,5 @@ class Music
         {
             Console.WriteLine("Join the plan Plus+");
         }
-    }
-
-    public void DisplayNameAndArtist()
-    {
-        Console.WriteLine($"Name: {name}, artist: {artist}");
     }
 }

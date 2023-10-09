@@ -1,17 +1,19 @@
 ﻿Music music1 = new Music();
-music1.name = "Crazy in love";
-music1.artist = "Beyoncé";
-music1.style = "Pop";
-music1.duration = 273;
-music1.available = true;
+music1.Name = "Crazy in love";
+music1.Artist = "Beyoncé";
+music1.Style = "Pop";
+music1.Duration = 273;
+music1.Available = true;
+Console.WriteLine(music1.Summary);
+
 
 Music music2 = new Music();
-music2.name = "Traum";
-music2.artist = "CRO";
-music2.style = "Hip hop";
-music2.duration = 300;
-music2.available = false;
+music2.Name = "Traum";
+music2.Artist = "CRO";
+music2.Style = "Hip hop";
+music2.Duration = 300;
+music2.Available = false;
+Console.WriteLine(music2.Summary);
 
 music1.DisplayMusicDetails();
 music2.DisplayMusicDetails();
-music1.DisplayNameAndArtist();
