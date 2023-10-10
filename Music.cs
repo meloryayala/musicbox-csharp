@@ -2,7 +2,6 @@ class Music
 {
     public string Name { get; set; }
     public string Artist { get; set; }
-    public string Style { get; set; }
     public int Duration { get; set; }
     public bool Available { get; set; }
 
@@ -15,7 +14,6 @@ class Music
     {
         Console.WriteLine($"Name: {Name}");
         Console.WriteLine($"Artist: {Artist}");
-        Console.WriteLine($"Style: {Style}");
         Console.WriteLine($"Duration: {Duration}");
         if (Available)
         {

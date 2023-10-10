@@ -1,19 +1,15 @@
-﻿Music music1 = new Music();
-music1.Name = "Crazy in love";
-music1.Artist = "Beyoncé";
-music1.Style = "Pop";
-music1.Duration = 273;
-music1.Available = true;
-Console.WriteLine(music1.Summary);
+﻿Album mana = new Album();
+mana.Name = "Revolución de amor";
 
+Music music1 = new Music();
+music1.Name = "Mariposa traicionera";
+music1.Duration = 213;
 
 Music music2 = new Music();
-music2.Name = "Traum";
-music2.Artist = "CRO";
-music2.Style = "Hip hop";
-music2.Duration = 300;
-music2.Available = false;
-Console.WriteLine(music2.Summary);
+music2.Name = "Labios compartidos";
+music2.Duration = 350;
 
-music1.DisplayMusicDetails();
-music2.DisplayMusicDetails();
+mana.AddMusic(music1);
+mana.AddMusic(music2);
+
+mana.DisplayAlbumMusics();
