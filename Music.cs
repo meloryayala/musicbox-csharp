@@ -22,6 +22,7 @@ class Music
         Console.WriteLine($"Name: {Name}");
         Console.WriteLine($"Artist: {Artist.Name}");
         Console.WriteLine($"Duration: {Duration}");
+        Console.WriteLine($"Genre: {Genre}");
         if (Available)
         {
             Console.WriteLine("Available on the plan.");
