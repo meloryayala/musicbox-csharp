@@ -1,7 +1,12 @@
 class Music
 {
+    public Music(Band artist)
+    {
+        Artist = artist;
+    }
+    
     public string Name { get; set; }
-    public string Artist { get; set; }
+    public Band Artist { get; }
     public int Duration { get; set; }
     public bool Available { get; set; }
     public Genre Genre { get; set; }

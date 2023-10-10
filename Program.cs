@@ -1,15 +1,20 @@
-﻿Album mana = new Album();
-mana.Name = "Revolución de amor";
+﻿Band mana = new Band();
+mana.Name = "Mana";
 
-Music music1 = new Music();
+Album manaAlbum = new Album();
+manaAlbum.Name = "Revolución de amor";
+
+Music music1 = new Music(mana);
 music1.Name = "Mariposa traicionera";
 music1.Duration = 213;
 
-Music music2 = new Music();
+Music music2 = new Music(mana);
 music2.Name = "Labios compartidos";
 music2.Duration = 350;
 
-mana.AddMusic(music1);
-mana.AddMusic(music2);
+manaAlbum.AddMusic(music1);
+manaAlbum.AddMusic(music2);
 
-mana.DisplayAlbumMusics();
+
+mana.AddAlbum(manaAlbum);
+mana.DisplayAlbums();
