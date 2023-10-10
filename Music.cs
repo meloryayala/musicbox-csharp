@@ -4,6 +4,7 @@ class Music
     public string Artist { get; set; }
     public int Duration { get; set; }
     public bool Available { get; set; }
+    public Genre Genre { get; set; }
 
     //get - arrow function type
     public string Summary =>
