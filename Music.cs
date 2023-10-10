@@ -20,7 +20,7 @@ class Music
     public void DisplayMusicDetails()
     {
         Console.WriteLine($"Name: {Name}");
-        Console.WriteLine($"Artist: {Artist}");
+        Console.WriteLine($"Artist: {Artist.Name}");
         Console.WriteLine($"Duration: {Duration}");
         if (Available)
         {

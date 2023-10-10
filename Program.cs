@@ -16,6 +16,9 @@ Music music2 = new Music(mana, "Lábios compartidos")
 
 manaAlbum.AddMusic(music1);
 manaAlbum.AddMusic(music2);
-
 mana.AddAlbum(manaAlbum);
+
+music1.DisplayMusicDetails();
+music2.DisplayMusicDetails();
+manaAlbum.DisplayAlbumMusics();
 mana.DisplayAlbums();
