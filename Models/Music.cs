@@ -1,3 +1,5 @@
+namespace MusicBox.Models;
+
 class Music
 {
     public Music(Band artist, string name)
@@ -5,18 +7,15 @@ class Music
         Artist = artist;
         Name = name;
     }
-    
+
     public string Name { get; }
     public Band Artist { get; }
     public int Duration { get; set; }
     public bool Available { get; set; }
     public Genre Genre { get; set; }
-
-    //get - arrow function type
     public string Summary =>
         $"The music {Name} is from {Artist}";
     
-
     public void DisplayMusicDetails()
     {
         Console.WriteLine($"Name: {Name}");

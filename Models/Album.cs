@@ -1,3 +1,5 @@
+namespace MusicBox.Models;
+
 class Album
 {
     private List<Music> musics = new List<Music>();
