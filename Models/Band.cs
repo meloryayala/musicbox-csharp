@@ -1,9 +1,9 @@
 namespace MusicBox.Models;
 
-class Band
+internal class Band
 {
     private List<Album> albums = new List<Album>();
-    private List<int> rates = new List<int>();
+    private List<Rating> rates = new List<Rating>();
 
     public Band(string name)
     {
@@ -11,14 +11,22 @@ class Band
     }
     
     public string Name { get; }
-    public double Average => rates.Average();
+
+    public double Average
+    {
+        get
+        {
+            if (rates.Count == 0) return 0;
+            else return rates.Average(r => r.Rate);
+        }
+    }
     public List<Album> Albums => albums;
     public void AddAlbum(Album album)
     {
         albums.Add(album);
     }
     
-    public void AddRate(int rate)
+    public void AddRate(Rating rate)
     {
         rates.Add(rate);
     }

@@ -1,10 +1,11 @@
 ﻿using System.Diagnostics;
 using MusicBox.Models;
 
+
 Band mana = new Band("Mana");
-mana.AddRate(10);
-mana.AddRate(8);
-mana.AddRate(6);
+mana.AddRate(new Rating(10));
+mana.AddRate(new Rating(8));
+mana.AddRate(new Rating(6));
 Band shakira = new Band("Shakira");
 
 string welcomeMsg = "Welcome to Music Box!";
@@ -150,9 +151,9 @@ void RateBand()
     {
         Band band = registeredBands[bandName];
         Console.Write($"\nWhich rate the band #{bandName} deserve? ");
-        int rate = int.Parse(Console.ReadLine()!);
+        Rating rate = Rating.Parse(Console.ReadLine()!);
         band.AddRate(rate);
-        Console.WriteLine($"\nThe rate => {rate} was successfully registered to #{bandName}!");
+        Console.WriteLine($"\nThe rate => {rate.Rate} was successfully registered to #{bandName}!");
         Thread.Sleep(4000);
         Console.Clear();
         DisplayMenuOptions();
