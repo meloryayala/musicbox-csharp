@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using MusicBox.Models;
-
+using MusicBox.Menus;
 
 Band mana = new Band("Mana");
 mana.AddRate(new Rating(10));
@@ -38,22 +38,33 @@ void DisplayMenuOptions()
     switch (choseOptionNumber)
     {
         case 1:
-            RegisterBand();
+            RegisterBand menu1 = new RegisterBand();
+            menu1. Execute(registeredBands);
+            DisplayMenuOptions();
             break;
         case 2:
-            DisplayBandsList();
+            DisplayBandList menu2 = new DisplayBandList();
+            menu2.Execute(registeredBands);
+            ReturnMenuOptions();
             break;
         case 3:
-            RateBand();
+            RateBand menu3 = new RateBand();
+            menu3.Execute(registeredBands);
+            ReturnMenuOptions();
             break;
         case 4:
-            DisplayBandAverage();
+            DisplayBandAverage menu4 = new DisplayBandAverage();
+            menu4.Execute(registeredBands);
+            ReturnMenuOptions();
             break;
         case 5:
-            DisplayBandDetails();
+            DisplayBandDetails menu5 = new DisplayBandDetails();
+            menu5.Execute(registeredBands);
+            ReturnMenuOptions();
             break;
         case -1:
-            Console.WriteLine("Bye bye :)");
+            LeaveMenu menuOut = new LeaveMenu();
+            menuOut.Execute();
             break;
         default:
             Console.WriteLine("Invalid option");
@@ -68,146 +79,3 @@ void ReturnMenuOptions()
     Console.Clear();
     DisplayMenuOptions();
 }
-
-void RegisterAlbum()
-{
-    Console.Clear();
-    DisplayTitle("Register an Album");
-    Console.Write("Write the band you want to add an album: ");
-    string bandName = Console.ReadLine()!;
-    Console.Write("Write the album name: ");
-    string albumName = Console.ReadLine()!;
-    if (registeredBands.ContainsKey(bandName))
-    {
-        Band band = registeredBands[bandName];
-        band.AddAlbum(new Album(albumName));
-        Console.WriteLine($"The album {albumName} of {bandName} was registered successfully!");
-        Thread.Sleep(4000);
-        Console.Clear();
-        DisplayMenuOptions();
-    }
-    else
-    {
-        Console.WriteLine($"\nThe band {bandName} was not found!");
-        ReturnMenuOptions();
-    }
-}
-
-void RegisterBand()
-{
-    Console.Clear();
-    DisplayLogo();
-    DisplayTitle("Register a band");
-    Console.Write("\nWrite the band name: ");
-    string bandName = Console.ReadLine()!;
-    Band band = new Band(bandName);
-    registeredBands.Add(bandName, band);
-    Console.WriteLine($"The band {bandName} was successfully registered!");
-    Thread.Sleep(2000);
-    Console.Clear();
-    DisplayMenuOptions();
-}
-
-void DisplayBandsList()
-{
-    Console.Clear();
-    DisplayLogo();
-    DisplayTitle("Check all bands");
-    //for with integer
-    // for (int i = 0; i < bandsList.Count(); i++)
-    // {
-    //     Console.WriteLine($"Band => {bandsList[i]}");
-    // }
-    foreach (string band in registeredBands.Keys)
-    {
-        Console.WriteLine($"Band => {band}");
-    }
-
-    ReturnMenuOptions();
-}
-
-void DisplayTitle(string title)
-{
-    int lettersQuantity = title.Length;
-    string asterisks = string.Empty.PadLeft(lettersQuantity, '*');
-    Console.WriteLine(asterisks);
-    Console.WriteLine(title);
-    Console.WriteLine(asterisks + "\n");
-}
-
-void RateBand()
-{
-    //which band?
-    //if band exist -> add rate
-    //otherwise return menu
-
-    Console.Clear();
-    DisplayLogo();
-    DisplayTitle("Rate a band");
-    Console.Write("Write the band name you want to rate: ");
-    string bandName = Console.ReadLine()!;
-
-    if (registeredBands.ContainsKey(bandName))
-    {
-        Band band = registeredBands[bandName];
-        Console.Write($"\nWhich rate the band #{bandName} deserve? ");
-        Rating rate = Rating.Parse(Console.ReadLine()!);
-        band.AddRate(rate);
-        Console.WriteLine($"\nThe rate => {rate.Rate} was successfully registered to #{bandName}!");
-        Thread.Sleep(4000);
-        Console.Clear();
-        DisplayMenuOptions();
-    }
-    else
-    {
-        Console.WriteLine($"\nThe band => {bandName} was not found");
-        ReturnMenuOptions();
-    }
-}
-
-void DisplayBandAverage()
-{
-    Console.Clear();
-    DisplayLogo();
-    DisplayTitle("Check the bands average rate");
-    Console.Write("\nWhich band average do you want to know? ");
-    string bandName = Console.ReadLine()!;
-
-    if (registeredBands.ContainsKey(bandName))
-    {
-        Band band = registeredBands[bandName];
-        Console.WriteLine($"\nThe band #{bandName} average is => {band.Average}!");
-        Thread.Sleep(4000);
-        Console.Clear();
-        DisplayMenuOptions();
-    }
-    else
-    {
-        Console.WriteLine($"The band #{bandName} was not found");
-        ReturnMenuOptions();
-    }
-}
-
-void DisplayBandDetails()
-{
-    Console.Clear();
-    DisplayTitle("Band details");
-    Console.Write("Which band do you want to know better? ");
-    string bandName = Console.ReadLine()!;
-    if (registeredBands.ContainsKey(bandName))
-    {
-        Band band = registeredBands[bandName];
-        Console.WriteLine($"\nThe average rate of {bandName} is {band.Average}.");
-        /**
-        * complete function
-        */
-        ReturnMenuOptions();
-    }
-    else
-    {
-        Console.WriteLine($"\nThe band {bandName} was not found!");
-        ReturnMenuOptions();
-    }
-}
-
-DisplayMenuOptions();
