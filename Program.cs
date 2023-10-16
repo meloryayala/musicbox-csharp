@@ -50,7 +50,7 @@ void DisplayMenuOptions()
         case 3:
             RateBand menu3 = new RateBand();
             menu3.Execute(registeredBands);
-            ReturnMenuOptions();
+            DisplayMenuOptions();
             break;
         case 4:
             DisplayBandAverage menu4 = new DisplayBandAverage();
@@ -79,3 +79,5 @@ void ReturnMenuOptions()
     Console.Clear();
     DisplayMenuOptions();
 }
+
+DisplayMenuOptions();

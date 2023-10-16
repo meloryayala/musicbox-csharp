@@ -17,7 +17,6 @@ internal class DisplayBandAverage: Menu
             Band band = registeredBands[bandName];
             Console.WriteLine($"\nThe band #{bandName} average is => {band.Average}!");
             Thread.Sleep(4000);
-            Console.Clear();
         }
         else
         {

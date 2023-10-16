@@ -23,13 +23,10 @@ internal class RateBand: Menu
             band.AddRate(rate);
             Console.WriteLine($"\nThe rate => {rate.Rate} was successfully registered to #{bandName}!");
             Thread.Sleep(4000);
-            Console.Clear();
-            
         }
         else
         {
             Console.WriteLine($"\nThe band => {bandName} was not found");
-            
         }
     }
 }
