@@ -4,9 +4,9 @@ namespace MusicBox.Menus;
 
 internal class DisplayBandAverage: Menu
 {
-    public void Execute(Dictionary<string, Band> registeredBands)
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
-        Console.Clear();
+        base.Execute(registeredBands);
         DisplayLogo();
         DisplayTitle("Check the bands average rate");
         Console.Write("\nWhich band average do you want to know? ");

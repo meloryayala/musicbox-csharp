@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using MusicBox.Models;
+﻿using MusicBox.Models;
 using MusicBox.Menus;
 
 Band mana = new Band("Mana");
@@ -12,20 +11,21 @@ string welcomeMsg = "Welcome to Music Box!";
 Dictionary<string, Band> registeredBands = new();
 registeredBands.Add(mana.Name, mana);
 
-void DisplayLogo()
-{
-    Console.WriteLine(@"
-█▀▄▀█ █░█ █▀ █ █▀▀   █▄▄ █▀█ ▀▄▀
-█░▀░█ █▄█ ▄█ █ █▄▄   █▄█ █▄█ █░█
-");
-}
+Dictionary<int, Menu> options = new();
+options.Add(1, new RegisterBand());
+options.Add(2, new RegisterAlbum());
+options.Add(3, new RateBand());
+options.Add(4, new DisplayBandAverage());
+options.Add(5, new DisplayBandDetails());
+options.Add(-1, new LeaveMenu());
 
 void DisplayMenuOptions()
 {
-    DisplayLogo();
+    Menu menu = new Menu();
+    menu.DisplayLogo();
     Console.WriteLine(welcomeMsg);
     Console.WriteLine("\nWrite 1 to register a band");
-    Console.WriteLine("Write 2 to display all bands");
+    Console.WriteLine("Write 2 to register an album");
     Console.WriteLine("Write 3 to rate a band");
     Console.WriteLine("Write 4 to display the band average rate");
     Console.WriteLine("Write 5 to see a band details");
@@ -35,40 +35,15 @@ void DisplayMenuOptions()
     string choseOption = Console.ReadLine()!;
     int choseOptionNumber = int.Parse(choseOption);
 
-    switch (choseOptionNumber)
+    if (options.ContainsKey(choseOptionNumber))
     {
-        case 1:
-            RegisterBand menu1 = new RegisterBand();
-            menu1. Execute(registeredBands);
-            DisplayMenuOptions();
-            break;
-        case 2:
-            DisplayBandList menu2 = new DisplayBandList();
-            menu2.Execute(registeredBands);
-            ReturnMenuOptions();
-            break;
-        case 3:
-            RateBand menu3 = new RateBand();
-            menu3.Execute(registeredBands);
-            DisplayMenuOptions();
-            break;
-        case 4:
-            DisplayBandAverage menu4 = new DisplayBandAverage();
-            menu4.Execute(registeredBands);
-            ReturnMenuOptions();
-            break;
-        case 5:
-            DisplayBandDetails menu5 = new DisplayBandDetails();
-            menu5.Execute(registeredBands);
-            ReturnMenuOptions();
-            break;
-        case -1:
-            LeaveMenu menuOut = new LeaveMenu();
-            menuOut.Execute();
-            break;
-        default:
-            Console.WriteLine("Invalid option");
-            break;
+        Menu menuToDisplay = options[choseOptionNumber];
+        menuToDisplay.Execute(registeredBands);
+        if (choseOptionNumber > 0) ReturnMenuOptions();
+    }
+
+    {
+        Console.WriteLine("Invalid option");
     }
 }
 

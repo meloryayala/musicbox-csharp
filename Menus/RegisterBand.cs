@@ -4,9 +4,9 @@ namespace MusicBox.Menus;
 
 internal class RegisterBand: Menu
 {
-    public void Execute(Dictionary<string, Band> registeredBands)
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
-        Console.Clear();
+        base.Execute(registeredBands);
         DisplayLogo();
         DisplayTitle("Register a band");
         Console.Write("\nWrite the band name: ");
@@ -14,7 +14,5 @@ internal class RegisterBand: Menu
         Band band = new Band(bandName);
         registeredBands.Add(bandName, band);
         Console.WriteLine($"The band {bandName} was successfully registered!");
-        Thread.Sleep(2000);
-        Console.Clear();
     }
 }

@@ -3,13 +3,13 @@ namespace MusicBox.Menus;
 
 internal class RateBand: Menu
 {
-    public void Execute(Dictionary<string, Band> registeredBands)
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
         //which band?
         //if band exist -> add rate
         //otherwise return menu
-
-        Console.Clear();
+        
+        base.Execute(registeredBands);
         DisplayLogo();
         DisplayTitle("Rate a band");
         Console.Write("Write the band name you want to rate: ");
@@ -22,7 +22,6 @@ internal class RateBand: Menu
             Rating rate = Rating.Parse(Console.ReadLine()!);
             band.AddRate(rate);
             Console.WriteLine($"\nThe rate => {rate.Rate} was successfully registered to #{bandName}!");
-            Thread.Sleep(4000);
         }
         else
         {

@@ -4,9 +4,9 @@ namespace MusicBox.Menus;
 
 internal class RegisterAlbum: Menu
 {
-    public void Execute(Dictionary<string, Band> registeredBands)
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
-        Console.Clear();
+        base.Execute(registeredBands);
         DisplayTitle("Register an Album");
         Console.Write("Write the band you want to add an album: ");
         string bandName = Console.ReadLine()!;
@@ -17,8 +17,6 @@ internal class RegisterAlbum: Menu
             Band band = registeredBands[bandName];
             band.AddAlbum(new Album(albumName));
             Console.WriteLine($"The album {albumName} of {bandName} was registered successfully!");
-            Thread.Sleep(4000);
-            Console.Clear();
         }
         else
         {

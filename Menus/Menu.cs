@@ -1,6 +1,8 @@
+using MusicBox.Models;
+
 namespace MusicBox.Menus;
 
-public class Menu
+internal class Menu
 {
     public void DisplayLogo()
     {
@@ -9,6 +11,7 @@ public class Menu
 █░▀░█ █▄█ ▄█ █ █▄▄   █▄█ █▄█ █░█
 ");
     }
+    
     public void DisplayTitle(string title)
     {
         int lettersQuantity = title.Length;
@@ -16,5 +19,10 @@ public class Menu
         Console.WriteLine(asterisks);
         Console.WriteLine(title);
         Console.WriteLine(asterisks + "\n");
+    }
+
+    public virtual void Execute(Dictionary<string, Band> registeredBands)
+    {
+        Console.Clear();
     }
 }

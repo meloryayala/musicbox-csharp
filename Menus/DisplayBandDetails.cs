@@ -4,9 +4,9 @@ namespace MusicBox.Menus;
 
 internal class DisplayBandDetails: Menu
 {
-   public void Execute(Dictionary<string, Band> registeredBands)
+   public override void Execute(Dictionary<string, Band> registeredBands)
     {
-        Console.Clear();
+        base.Execute(registeredBands);
         DisplayTitle("Band details");
         Console.Write("Which band do you want to know better? ");
         string bandName = Console.ReadLine()!;
@@ -14,10 +14,7 @@ internal class DisplayBandDetails: Menu
         {
             Band band = registeredBands[bandName];
             Console.WriteLine($"\nThe average rate of {bandName} is {band.Average}.");
-            /**
-            * complete function
-            */
-            
+            band.DisplayAlbums();
         }
         else
         {

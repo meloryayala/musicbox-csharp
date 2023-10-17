@@ -1,8 +1,10 @@
+using MusicBox.Models;
+
 namespace MusicBox.Menus;
 
-internal class LeaveMenu
+internal class LeaveMenu: Menu
 {
-    public void Execute()
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
         Console.WriteLine("Bye bye :)");
     }
