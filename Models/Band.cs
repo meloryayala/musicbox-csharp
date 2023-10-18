@@ -1,6 +1,6 @@
 namespace MusicBox.Models;
 
-internal class Band
+internal class Band : IRatable
 {
     private List<Album> albums = new List<Album>();
     private List<Rating> rates = new List<Rating>();
@@ -36,7 +36,11 @@ internal class Band
         Console.WriteLine($"Albums of {Name}\n");
         foreach (var album in albums)
         {
-            Console.WriteLine($"Album => {album.Name} - ({album.TotalDuration}s)");
+            Console.WriteLine("\n-----------------------------------------------------------\n");
+            Console.WriteLine($"Album => {album.Name}");
+            Console.WriteLine($"Duration - ({album.TotalDuration}s) ");
+            Console.WriteLine($"Avarage rate - ${album.Average}\"");
         }
+        Console.WriteLine("\n-----------------------------------------------------------\n");    
     }
 }

@@ -14,9 +14,10 @@ registeredBands.Add(mana.Name, mana);
 Dictionary<int, Menu> options = new();
 options.Add(1, new RegisterBand());
 options.Add(2, new RegisterAlbum());
-options.Add(3, new RateBand());
-options.Add(4, new DisplayBandAverage());
-options.Add(5, new DisplayBandDetails());
+options.Add(3, new BandsList());
+options.Add(4, new RateBand());
+options.Add(5, new RateAlbum());
+options.Add(6, new DisplayBandDetails());
 options.Add(-1, new LeaveMenu());
 
 void DisplayMenuOptions()
@@ -25,10 +26,11 @@ void DisplayMenuOptions()
     menu.DisplayLogo();
     Console.WriteLine(welcomeMsg);
     Console.WriteLine("\nWrite 1 to register a band");
-    Console.WriteLine("Write 2 to register an album");
-    Console.WriteLine("Write 3 to rate a band");
-    Console.WriteLine("Write 4 to display the band average rate");
-    Console.WriteLine("Write 5 to see a band details");
+    Console.WriteLine("Write 2 to register an album of a band");
+    Console.WriteLine("Write 3 to see all bands");
+    Console.WriteLine("Write 4 to rate a band");
+    Console.WriteLine("Write 5 to rate an album of a band");
+    Console.WriteLine("Write 6 to see a band details");
     Console.WriteLine("Write -1 to leave the application");
 
     Console.Write("\nWhat is your choice? ");

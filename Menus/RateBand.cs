@@ -5,11 +5,12 @@ internal class RateBand: Menu
 {
     public override void Execute(Dictionary<string, Band> registeredBands)
     {
+        base.Execute(registeredBands);
+        
         //which band?
         //if band exist -> add rate
         //otherwise return menu
         
-        base.Execute(registeredBands);
         DisplayLogo();
         DisplayTitle("Rate a band");
         Console.Write("Write the band name you want to rate: ");

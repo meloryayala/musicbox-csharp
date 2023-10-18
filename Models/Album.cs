@@ -1,14 +1,29 @@
 namespace MusicBox.Models;
 
-internal class Album
+internal class Album : IRatable
 {
     private List<Music> musics = new List<Music>();
+    private List<Rating> rates = new List<Rating>();
 
     public static int CountObjects = 0;
     public Album(string name)
     {
         Name = name;
         CountObjects++;
+    }
+    
+    public double Average
+    {
+        get
+        {
+            if (rates.Count == 0) return 0;
+            else return rates.Average(r => r.Rate);
+        }
+    }
+    
+    public void AddRate(Rating rate)
+    {
+        rates.Add(rate);
     }
 
     public string Name { get; }
