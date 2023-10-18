@@ -20,7 +20,7 @@ internal class Band : IRatable
             else return rates.Average(r => r.Rate);
         }
     }
-    public List<Album> Albums => albums;
+    public IEnumerable<Album> Albums => albums;
     public void AddAlbum(Album album)
     {
         albums.Add(album);
@@ -39,7 +39,7 @@ internal class Band : IRatable
             Console.WriteLine("\n-----------------------------------------------------------\n");
             Console.WriteLine($"Album => {album.Name}");
             Console.WriteLine($"Duration - ({album.TotalDuration}s) ");
-            Console.WriteLine($"Avarage rate - ${album.Average}\"");
+            Console.WriteLine($"Average rate - ${album.Average}\"");
         }
         Console.WriteLine("\n-----------------------------------------------------------\n");    
     }
